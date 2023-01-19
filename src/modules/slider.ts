@@ -1,12 +1,12 @@
 export default class Slider {
     page: HTMLElement;
-    btns!: HTMLElement;
-    slides: HTMLCollection;
+    btns: NodeListOf<HTMLButtonElement>;
+    slides: HTMLDivElement[];
     slideIndex: number;
 
-  constructor(page: HTMLElement, btns: HTMLElement) {
-    this.page = document.querySelector(page);
-    this.slides = this.page.children;  //обращение к дочерним элеменnам page
+  constructor(page:string , btns:string ) {
+    this.page = document.querySelector(page) as HTMLElement;
+    this.slides = Array.from(this.page.children) as HTMLDivElement[];  //обращение к дочерним элеменnам page
     this.btns = document.querySelectorAll(btns);
     this.slideIndex = 1;
   }
@@ -30,12 +30,12 @@ export default class Slider {
   }
 
   render() {
-    this.btns.forEach(btn => {
+    this.btns.forEach((btn: HTMLButtonElement) => {
       btn.addEventListener('click', () => {
         this.plusSlides(1);
       })
 
-      btn.parentNode.previousElementSibling.addEventListener('click', (e: Event) => {
+      btn.parentNode?.previousSibling?.addEventListener('click', (e: Event) => {
         e.preventDefault();
         this.slideIndex = 1;
         this.showSlides(this.slideIndex);
