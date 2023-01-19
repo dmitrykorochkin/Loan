@@ -1,8 +1,8 @@
 export default class Slider {
     page: string;
-    btns: string
+    btns: HTMLCollection
 
-  constructor(page: string, btns: string) {
+  constructor(page: string, btns: HTMLCollection) {
     this.page = document.querySelector(page);
     this.slides = this.page.children;  //обращение к дочерним элеменnам page
     this.btns = document.querySelectorAll(btns);
@@ -33,7 +33,7 @@ export default class Slider {
         this.plusSlides(1);
       })
 
-      item.parent.previousElementSibling.addEventListener('click', (e: Event) => {
+      item.parentNode.previousElementSibling.addEventListener('click', (e: Event) => {
         e.preventDefault();
         this.slideIndex = 1;
         this.showSlides(this.slideIndex);
