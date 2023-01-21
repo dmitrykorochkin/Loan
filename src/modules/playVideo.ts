@@ -1,18 +1,40 @@
 export default class VideoPlayer {
+  btns: NodeListOf<HTMLButtonElement>;
+  overlay: HTMLElement;
+  close: HTMLElement;
 
-
-  constructor(triggers, overlay) {
-    this.btns = document.querySelectorAll(triggers);
-    this.overlay = document.querySelector(overlay);
-    this.close = this.overlay.querySelector('.close');
+  constructor(triggers: string, overlay: string) {
+    this.btns = document.querySelectorAll(triggers) as NodeListOf<HTMLButtonElement>;;
+    this.overlay = document.querySelector(overlay) as HTMLElement;
+    this.close = this.overlay.querySelector('.close') as HTMLElement;
   }
-  createPlayer(url) {
+
+  bindCloseBtn() {
+    this.close.addEventListener('click', () => {
+      this.overlay.style.display = 'none';
+      this.player.stopVideo();
+    });
+  }
+
+  bindTriggers() {
+    this.btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (document.querySelector('iframe#frame')) {
+          this.overlay.style.display = 'flex'
+        } else {
+          const path = btn.getAttribute('data-url');
+          this.createPlayer(path);
+        }
+
+      })
+    })
+  }
+  createPlayer(url: string) {
     this.player = new YT.Player('frame', {
       height: '100%',
       width: '100%',
       videoId: `${url}`,
     });
-    console.log(this.player);
     this.overlay.style.display = 'flex '
   }
   init() {
@@ -20,13 +42,9 @@ export default class VideoPlayer {
 
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
 
-    this.btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const path = btn.getAttribute('data-url');
-        this.createPlayer(path)
-      })
-    })
+    this.bindTriggers()
+    this.bindCloseBtn()
   }
 }
