@@ -22,13 +22,14 @@ export default class VideoPlayer {
         if (document.querySelector('iframe#frame')) {
           this.overlay.style.display = 'flex'
         } else {
-          const path = btn.getAttribute('data-url');
+          const path: string | null = btn.getAttribute('data-url');
           this.createPlayer(path);
         }
 
       })
     })
   }
+
   createPlayer(url: string) {
     this.player = new YT.Player('frame', {
       height: '100%',
