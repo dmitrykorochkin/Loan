@@ -1,7 +1,7 @@
 import Slider from './slider'
 
 export default class MainSlider extends Slider {
-  constructor(page: string, btns: string) {
+  constructor(page: string, btns: string, prev: string) {
     super(page, btns);
   }
 
