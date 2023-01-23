@@ -3,10 +3,12 @@ import Slider from './slider'
 interface IMainSlider {
   page?: string,
   btns?: string,
+  next?: string,
+  prev?: string
 }
 export default class MainSlider extends Slider {
-  constructor({page, btns} : IMainSlider) {
-    super({page, btns});
+  constructor({page, btns, next, prev} : IMainSlider) {
+    super({page, btns, next, prev});
   }
 
   showSlides(n: number) {
