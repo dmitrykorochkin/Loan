@@ -1,8 +1,16 @@
 import Slider from "./slider";
 
 export default class MiniSlider extends Slider {
-  constructor(page? :string, next?: string, prev?: string) {
-    super(page, next, prev);
+  constructor({
+    page,
+    next,
+    prev
+  } : {
+    page? :string, 
+    next?: string, 
+    prev?: string
+  }) {
+    super({page, next, prev});
   }
 
   init() {
