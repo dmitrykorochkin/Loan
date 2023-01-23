@@ -2,7 +2,7 @@ import MainSlider from './modules/slider/slider-main';
 import MiniSlider from './modules/slider/slider-mini';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const slider = new MainSlider({page: '.page', btns: '.next'});
+  const slider = new MainSlider({btns: '.next', page: '.page'});
   slider.render();
 
   const showUpSlider = new MiniSlider({

@@ -1,8 +1,12 @@
 import Slider from './slider'
 
+interface IMainSlider {
+  page?: string,
+  btns?: string,
+}
 export default class MainSlider extends Slider {
-  constructor(page: string, btns: string, prev: string) {
-    super(page, btns);
+  constructor({page, btns} : IMainSlider) {
+    super({page, btns});
   }
 
   showSlides(n: number) {
