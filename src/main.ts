@@ -2,27 +2,34 @@ import MainSlider from './modules/slider/slider-main';
 import MiniSlider from './modules/slider/slider-mini';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const slider = new MainSlider({btns: '.next', page: '.page'});
+  const slider = new MainSlider({ btns: '.next', page: '.page' });
   slider.render();
 
   const showUpSlider = new MiniSlider({
     page: '.showup__content-slider',
     prev: '.shopup__prev',
     next: '.shopup__next',
+    activeClass: 'card-active',
+    animate: true
   });
   showUpSlider.init()
 
-  const modulesSlider = new MiniSlider ({
+  const modulesSlider = new MiniSlider({
     page: '.moules__content-slider',
     prev: '.modules__info-btns .slick-prev',
     next: '.modules__info-btns .slick-next',
+    activeClass: 'card-active',
+    animate: true,
+    autoplay: true
+
   })
   modulesSlider.init()
 
-  const feedSlider = new MiniSlider ({
+  const feedSlider = new MiniSlider({
     page: '.feed__slider',
     prev: '.feed__slider .slick-prev',
     next: '.feed__slider .slick-next',
+    activeClass: 'feed__item-active'
   })
   feedSlider.init()
 });
