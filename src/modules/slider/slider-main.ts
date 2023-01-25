@@ -8,7 +8,7 @@ interface IMainSlider {
 }
 export default class MainSlider extends Slider {
   constructor({page, btns, next, prev} : IMainSlider) {
-    super({page, btns, next, prev});
+    super({page, btns, next, prev} );
   }
 
   showSlides(n: number) {

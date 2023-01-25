@@ -1,4 +1,4 @@
-import { resolveTransitionHooks } from "vue";
+
 import Slider from "./slider";
 
 interface IMiniSlider {
@@ -51,7 +51,7 @@ export default class MiniSlider extends Slider {
 
       for (let i = this.slides.length - 1; i > 0; i--) {
         if (this.slides[i].tagName !== 'BUTTON') {
-          let active = this.slides[i];
+          const active = this.slides[i];
           this.page.insertBefore(active, this.slides[0])
           this.decorizeSlides();
           break;
