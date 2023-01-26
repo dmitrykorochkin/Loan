@@ -7,15 +7,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const showUpSlider = new MiniSlider({
     page: '.showup__content-slider',
-    prev: '.shopup__prev',
-    next: '.shopup__next',
+    prev: '.showup__prev',
+    next: '.showup__next',
     activeClass: 'card-active',
     animate: true
   });
   showUpSlider.init()
 
   const modulesSlider = new MiniSlider({
-    page: '.moules__content-slider',
+    page: '.modules__content-slider',
     prev: '.modules__info-btns .slick-prev',
     next: '.modules__info-btns .slick-next',
     activeClass: 'card-active',

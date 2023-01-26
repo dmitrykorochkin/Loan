@@ -18,7 +18,7 @@ export default class MiniSlider extends Slider {
       slide.classList.remove(this.activeClass)
       if (this.animate) {
         slide.querySelector('.card__title').style.opacity = '0.4';
-        slide.querySelector('.card__controls-arrow ').style.opacity = '0'
+        slide.querySelector('.card__controls-arrow').style.opacity = '0';
       }
     })
     if (!this.slides[0].closest('button')) {
@@ -27,7 +27,7 @@ export default class MiniSlider extends Slider {
 
     if (this.animate) {
       this.slides[0].querySelector('.card__title').style.opacity = '1';
-      this.slides[0].querySelector('.card__controls-arrow ').style.opacity = '1'
+      this.slides[0].querySelector('.card__controls-arrow').style.opacity = '1'
     }
   }
   nextSlide() {
@@ -51,7 +51,7 @@ export default class MiniSlider extends Slider {
 
       for (let i = this.slides.length - 1; i > 0; i--) {
         if (this.slides[i].tagName !== 'BUTTON') {
-          const active = this.slides[i];
+          let active = this.slides[i];
           this.page.insertBefore(active, this.slides[0])
           this.decorizeSlides();
           break;

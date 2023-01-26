@@ -30,7 +30,7 @@ export default class Slider {
     this.hanson = document.querySelector('.hanson') as HTMLElement;
     this.activeClass = activeClass;
     this.animate = animate,
-      this.autoplay = autoplay
+    this.autoplay = autoplay
   }
 
 
