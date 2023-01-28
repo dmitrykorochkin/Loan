@@ -1,5 +1,3 @@
-import { isTemplateNode } from "@vue/compiler-core";
-
 export default class Difference {
 
   oldOfficer: HTMLElement;
