@@ -1,14 +1,8 @@
-import Slider from './slider'
+import Slider, { ISlider } from './slider'
 
-interface IMainSlider {
-  page?: string,
-  btns?: string,
-  next?: string,
-  prev?: string
-}
 export default class MainSlider extends Slider {
-  constructor({page, btns, next, prev} : IMainSlider) {
-    super({page, btns, next, prev} );
+  constructor({ page, btns }: ISlider) {
+    super({ page, btns });
   }
 
   showSlides(n: number) {

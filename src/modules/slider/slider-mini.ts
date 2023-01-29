@@ -23,10 +23,10 @@ export default class MiniSlider extends Slider {
     }
   }
   nextSlide() {
-      this.page.append(this.slides[0]);
-      this.slides.push(this.slides[0]);
-      this.slides.shift();
-      this.decorizeSlides();
+    this.page.append(this.slides[0]);
+    this.slides.push(this.slides[0]);
+    this.slides.shift();
+    this.decorizeSlides();
   }
 
   prevSlide() {
@@ -37,8 +37,8 @@ export default class MiniSlider extends Slider {
   }
 
   bindTriggers() {
-    this.next.addEventListener('click', () => this.nextSlide());
-    this.prev.addEventListener('click', () => this.prevSlide());
+    this.next?.addEventListener('click', () => this.nextSlide());
+    this.prev?.addEventListener('click', () => this.prevSlide());
   }
 
   init() {

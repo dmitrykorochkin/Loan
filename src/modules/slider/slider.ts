@@ -3,9 +3,9 @@ export interface ISlider {
   btns?: string | null;
   next?: string | null;
   prev?: string | null;
-  animate?: string | null;
-  autoplay?: string | null;
-  activeClass?:string | null;
+  animate?: boolean;
+  autoplay?: boolean;
+  activeClass?: string | null;
 }
 export default class Slider {
   page: HTMLElement;
@@ -28,7 +28,7 @@ export default class Slider {
     activeClass = null,
     animate = false,
     autoplay = false
-  } = {}) {
+  }: ISlider) {
 
     this.page = document.querySelector(page as string) as HTMLElement;
     this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON');  //обращение к дочерним элеменnам page
@@ -39,7 +39,7 @@ export default class Slider {
     this.hanson = document.querySelector('.hanson') as HTMLElement;
     this.activeClass = activeClass || '';
     this.animate = Boolean(animate),
-    this.autoplay = Boolean(autoplay)
+      this.autoplay = Boolean(autoplay)
   }
 
 
