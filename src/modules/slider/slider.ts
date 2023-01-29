@@ -1,3 +1,12 @@
+export interface ISlider {
+  page: string | null;
+  btns?: string | null;
+  next?: string | null;
+  prev?: string | null;
+  animate?: string | null;
+  autoplay?: string | null;
+  activeClass?:string | null;
+}
 export default class Slider {
   page: HTMLElement;
   btns: NodeListOf<HTMLButtonElement>;
@@ -6,31 +15,31 @@ export default class Slider {
   hanson: HTMLElement;
   next: HTMLElement;
   prev: HTMLElement;
-  animate: HTMLElement;
-  autoplay: HTMLElement;
+  animate: boolean;
+  autoplay: boolean;
   activeClass: string;
 
 
   constructor({
-    page = '',
-    btns = '',
-    next = '',
-    prev = '',
-    activeClass = '',
-    animate,
-    autoplay
+    page = null,
+    btns = null,
+    next = null,
+    prev = null,
+    activeClass = null,
+    animate = false,
+    autoplay = false
   } = {}) {
 
-    this.page = document.querySelector(page) as HTMLElement;
-    this.slides = Array.from(this.page.children) as HTMLDivElement[];  //обращение к дочерним элеменnам page
-    this.btns = document.querySelectorAll(btns);
-    this.next = document.querySelector(next) as HTMLDivElement;
-    this.prev = document.querySelector(prev) as HTMLDivElement;
+    this.page = document.querySelector(page as string) as HTMLElement;
+    this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON');  //обращение к дочерним элеменnам page
+    this.btns = document.querySelectorAll(btns as string);
+    this.next = document.querySelector(next as string) as HTMLDivElement;
+    this.prev = document.querySelector(prev as string) as HTMLDivElement;
     this.slideIndex = 1;
     this.hanson = document.querySelector('.hanson') as HTMLElement;
-    this.activeClass = activeClass;
-    this.animate = animate,
-    this.autoplay = autoplay
+    this.activeClass = activeClass || '';
+    this.animate = Boolean(animate),
+    this.autoplay = Boolean(autoplay)
   }
 
 
