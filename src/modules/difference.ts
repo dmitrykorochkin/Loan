@@ -4,8 +4,8 @@ export default class Difference {
   newOfficer: HTMLElement;
   oldCounter: number;
   newCounter: number;
-  oldItems: Array<string>;
-  newItems: Array<string>;
+  oldItems: NodeList;
+  newItems: NodeList;
 
   constructor(oldOfficer: string, newOfficer: string, items: string) {
 
@@ -13,26 +13,26 @@ export default class Difference {
     this.newOfficer = document.querySelector(newOfficer) as HTMLElement;
     this.oldCounter = 0;
     this.newCounter = 0;
-    this.newItems = this.newOfficer.querySelectorAll(items) as any;
-    this.oldItems = this.oldOfficer.querySelectorAll(items) as any;
+    this.newItems = this.newOfficer.querySelectorAll(items);
+    this.oldItems = this.oldOfficer.querySelectorAll(items);
   }
 
-  bindTriggers(container: HTMLElement, items: string[], counter: number) {
+  bindTriggers(container: HTMLElement, items: NodeList, counter: number) {
     container.querySelector('.plus')?.addEventListener('click', () => {
       if (counter !== items.length - 2) {
-        (items as any)[counter].style.display = 'flex';
+        (items[counter] as HTMLElement).style.display = 'flex';
         counter++
       } else {
-        (items as any)[counter].style.display = 'flex';
-        (items as any)[items.length - 1].remove();
+        (items[counter] as HTMLElement).style.display = 'flex';
+       ( items[items.length - 1] as HTMLElement).remove();
       }
     });
   }
 
-  hideItems(items: any[],) {
+  hideItems(items:NodeList,) {
     items.forEach((item, i, arr) => {
       if (i !== arr.length - 1) {
-        item.style.display = 'none';
+        (item as HTMLElement).style.display = 'none';
       }
     });
   }
