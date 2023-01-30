@@ -1,6 +1,5 @@
 import MainSlider from './modules/slider/slider-main';
 import MiniSlider from './modules/slider/slider-mini';
-import Slider from './modules/slider';
 import VideoPlayer from './modules/playVideo';
 import Difference from './modules/difference';
 
