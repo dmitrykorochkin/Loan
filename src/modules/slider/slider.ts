@@ -31,7 +31,7 @@ export default class Slider {
   }: ISlider) {
 
     this.page = document.querySelector(page as string) as HTMLElement;
-    this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON');  //обращение к дочерним элеменnам page
+    try {this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON')} catch (e) {} 
     this.btns = document.querySelectorAll(btns as string);
     this.next = document.querySelector(next as string) as HTMLDivElement;
     this.prev = document.querySelector(prev as string) as HTMLDivElement;
