@@ -10,7 +10,7 @@ export default class Form {
   message: MessageType
   path: string
 
-  constructor(forms: string, url: string) {
+  constructor(forms: string) {
     this.forms = document.querySelectorAll(forms);
     this.inputs = document.querySelectorAll('input');
     this.message = {
