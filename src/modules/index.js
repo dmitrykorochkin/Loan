@@ -1,1 +1,3 @@
-export {slider} from './slider/slider';
+export {slider} from './slider';
+export {playvideo} from './playVideo';
+export {difference} from './difference';
