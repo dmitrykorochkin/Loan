@@ -40,12 +40,12 @@ export default class Form {
   }
 
   initMask() {
-    const setCursorPosition = (pos: any, elem: any) => {
+    const setCursorPosition = (pos: number, elem: HTMLInputElement) => {
       elem.focus();
       if (elem.setSelectionRange) {
         elem.setSelectionRange(pos, pos);
-      } else if (elem.createTextRange) {
-        let range = elem.createTextRange();
+      } else if ((elem as any).createTextRange) {
+        const range = (elem as HTMLInputElement).createTextRange();
 
         range.collapse(true);
         range.moveEnd('character', pos);
@@ -112,7 +112,7 @@ export default class Form {
 
         statusMessage.textContent = this.message.loading;
 
-        const formData: any = new FormData(form);
+        const formData: FormData = new FormData(form);
         this.postData(this.path, formData)
           .then(res => {
             console.log(res);
