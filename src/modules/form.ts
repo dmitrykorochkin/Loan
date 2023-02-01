@@ -45,7 +45,7 @@ export default class Form {
       if (elem.setSelectionRange) {
         elem.setSelectionRange(pos, pos);
       } else if ((elem as any).createTextRange) {
-        const range = (elem as HTMLInputElement).createTextRange();
+        const range = (elem as any).createTextRange();
 
         range.collapse(true);
         range.moveEnd('character', pos);
