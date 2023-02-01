@@ -6,7 +6,7 @@ export default class MiniSlider extends Slider {
     super({ page, next, prev, activeClass, animate, autoplay });
   }
   decorizeSlides() {
-    this.slides.forEach(slide => {
+    (this.slides as HTMLDivElement[]).forEach(slide => {
       slide.classList.remove(this.activeClass)
       if (this.animate) {
         (slide.querySelector('.card__title') as HTMLElement).style.opacity = '0.4';
@@ -42,7 +42,8 @@ export default class MiniSlider extends Slider {
   }
 
   init() {
-    this.page.style.cssText = `
+    try{
+      this.page.style.cssText = `
       display:flex;
       flex-wrap: wrap;
       overflow: hidden;
@@ -55,5 +56,6 @@ export default class MiniSlider extends Slider {
     if (this.autoplay) {
       setInterval(() => this.nextSlide(), 5000);
     }
+    } catch(e){}
   }
 }

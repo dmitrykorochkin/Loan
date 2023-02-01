@@ -31,7 +31,7 @@ export default class Slider {
   }: ISlider) {
 
     this.page = document.querySelector(page as string) as HTMLElement;
-    this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON');  //обращение к дочерним элеменnам page
+    this.slides = (Array.from(this.page.children) as HTMLDivElement[]).filter(slide => slide.tagName !== 'BUTTON')
     this.btns = document.querySelectorAll(btns as string);
     this.next = document.querySelector(next as string) as HTMLDivElement;
     this.prev = document.querySelector(prev as string) as HTMLDivElement;
@@ -39,7 +39,7 @@ export default class Slider {
     this.hanson = document.querySelector('.hanson') as HTMLElement;
     this.activeClass = activeClass || '';
     this.animate = Boolean(animate),
-      this.autoplay = Boolean(autoplay)
+    this.autoplay = Boolean(autoplay)
   }
 
 
