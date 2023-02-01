@@ -1,11 +1,11 @@
 export default class Difference {
 
-  oldOfficer: HTMLElement;
-  newOfficer: HTMLElement;
-  oldCounter: number;
-  newCounter: number;
-  oldItems: NodeList;
-  newItems: NodeList;
+  oldOfficer?: HTMLElement;
+  newOfficer?: HTMLElement;
+  oldCounter?: number;
+  newCounter?: number;
+  oldItems?: NodeList;
+  newItems?: NodeList;
 
   constructor(oldOfficer: string, newOfficer: string, items: string) {
 
