@@ -41,10 +41,10 @@ export default class Difference {
 
   init() {
     try {
-      this.hideItems(this.oldItems);
-      this.hideItems(this.newItems);
-      this.bindTriggers(this.oldOfficer, this.oldItems, this.oldCounter);
-      this.bindTriggers(this.newOfficer, this.newItems, this.newCounter);
+      this.hideItems(this.oldItems as NodeList);
+      this.hideItems(this.newItems as NodeList);
+      this.bindTriggers((this.oldOfficer as HTMLElement), (this.oldItems as NodeList), (this.oldCounter as number));
+      this.bindTriggers((this.newOfficer as HTMLElement), (this.newItems as NodeList), (this.newCounter as number));
     } catch (e) {}
   }
 }
