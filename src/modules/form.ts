@@ -86,7 +86,7 @@ export default class Form {
     })
   }
 
-  async postData(url: string, data: string) {
+  async postData(url: string, data: FormData) {
     const res = await fetch(url, {
       method: 'POST',
       body: data
