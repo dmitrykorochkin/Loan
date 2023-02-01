@@ -10,7 +10,7 @@ export interface ISlider {
 export default class Slider {
   page: HTMLElement;
   btns: NodeListOf<HTMLButtonElement>;
-  slides: HTMLDivElement[];
+  slides?: HTMLDivElement[];
   slideIndex: number;
   hanson: HTMLElement;
   next: HTMLElement;
