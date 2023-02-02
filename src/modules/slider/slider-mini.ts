@@ -42,7 +42,7 @@ export default class MiniSlider extends Slider {
   }
 
   init() {
-    try{
+    try {
       this.page.style.cssText = `
       display:flex;
       flex-wrap: wrap;
@@ -50,12 +50,12 @@ export default class MiniSlider extends Slider {
       align-items: flex-start;
     `
 
-    this.bindTriggers();
-    this.decorizeSlides();
+      this.bindTriggers();
+      this.decorizeSlides();
 
-    if (this.autoplay) {
-      setInterval(() => this.nextSlide(), 5000);
-    }
-    } catch(e){}
+      if (this.autoplay) {
+        setInterval(() => this.nextSlide(), 5000);
+      }
+    } catch (e) { }
   }
 }
