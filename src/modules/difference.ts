@@ -13,8 +13,8 @@ export default class Difference {
     this.newOfficer = document.querySelector(newOfficer) as HTMLElement;
     this.oldCounter = 0;
     this.newCounter = 0;
-    this.newItems = this.newOfficer.querySelectorAll(items);
-    this.oldItems = this.oldOfficer.querySelectorAll(items);
+    this.newItems = this.newOfficer.querySelectorAll(items) as NodeList;
+    this.oldItems = this.oldOfficer.querySelectorAll(items) as NodeList;
   }
 
   bindTriggers(container: HTMLElement, items: NodeList, counter: number) {
