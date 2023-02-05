@@ -39,7 +39,7 @@ export default class VideoPlayer {
             this.overlay.style.display = 'flex'
             if (this.path !== btn.getAttribute('data-url')) {
               this.path = btn.getAttribute('data-url');  
-              this.player.loadVideoById({ videoId: this.path })
+              this.player?.loadVideoById({ videoId: this.path })
             }
           } else {
             this.path = btn.getAttribute('data-url')
@@ -62,7 +62,7 @@ export default class VideoPlayer {
     this.overlay.style.display = 'flex '
   }
 
-  onPlayerStateChange(state) {
+  onPlayerStateChange(state: any) {
     try{
       const blockedElem = this.activeBtn.closest('.module__video-item').nextElementSibling;
       const playBtn = this.activeBtn.querySelector('svg').cloneNode(true);
