@@ -6,5 +6,5 @@ window.addEventListener('DOMContentLoaded', () => {
   slider.render();
 
   new VideoPlayer('.showup .play', '.overlay').init();
-  new VideoPlayer('module__video-item', '.overlay').init();
+  new VideoPlayer('.module__video-item', '.overlay').init();
 });
