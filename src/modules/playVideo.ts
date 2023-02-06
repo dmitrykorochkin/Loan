@@ -6,7 +6,8 @@ export default class VideoPlayer {
   overlay: HTMLElement
   close: HTMLElement
   player?: IYouTubePlayer
-  path: any
+  path?: string
+  activeBtn?: HTMLElement 
 
   constructor(triggers: string, overlay: string) {
     this.btns = document.querySelectorAll(
@@ -38,11 +39,11 @@ export default class VideoPlayer {
           if (document.querySelector('iframe#frame')) {
             this.overlay.style.display = 'flex'
             if (this.path !== btn.getAttribute('data-url')) {
-              this.path = btn.getAttribute('data-url');  
+              this.path = btn.getAttribute('data-url') as string;  
               this.player?.loadVideoById({ videoId: this.path })
             }
           } else {
-            this.path = btn.getAttribute('data-url')
+            this.path = btn.getAttribute('data-url') as string;
             this.createPlayer(this.path)
           }
         }
@@ -64,17 +65,17 @@ export default class VideoPlayer {
 
   onPlayerStateChange(state: any) {
     try{
-      const blockedElem = this.activeBtn.closest('.module__video-item').nextElementSibling;
-      const playBtn = this.activeBtn.querySelector('svg').cloneNode(true);
+      const blockedElem = (this.activeBtn.closest('.module__video-item') as HTMLElement).nextElementSibling as HTMLElement;
+      const playBtn = (this.activeBtn.querySelector('svg') as SVGElement).cloneNode(true);
   
       if (state.data === 0) {
-        if (blockedElem.querySelector('.play__Circle').classList.remove('closed')) {
-          blockedElem.querySelector('.play__Circle').classList.contains('closed');
-          blockedElem.querySelector('svg').remove();
-          blockedElem.querySelector('.play__circle').append(playBtn);
-          blockedElem.querySelector('.play__text').textContent = 'play video';
-          blockedElem.querySelector('.play__text').classList.remove('attention');
-          blockedElem.style.opacity = 1;
+        if ((blockedElem.querySelector('.play__Circle') as HTMLElement).classList.remove('closed')) {
+          (blockedElem.querySelector('.play__Circle') as HTMLElement).classList.contains('closed');
+          (blockedElem.querySelector('svg') as SVGElement).remove();
+          (blockedElem.querySelector('.play__circle') as HTMLElement).append(playBtn);
+          (blockedElem.querySelector('.play__text') as HTMLElement).textContent = 'play video';
+          (blockedElem.querySelector('.play__text') as HTMLElement).classList.remove('attention');
+          (blockedElem as HTMLElement).style.opacity = 1;
           blockedElem.style.filter = 'none';
   
           blockedElem.setAttribute('data-disabled', 'false');
