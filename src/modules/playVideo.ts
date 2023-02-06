@@ -38,7 +38,7 @@ export default class VideoPlayer {
         if( btn.closest('.module__video-item')?.getAttribute('data-disabled') !== 'true') {
           if (document.querySelector('iframe#frame')) {
             (this.overlay as HTMLElement).style.display = 'flex'
-            && (this.path !== btn.getAttribute('data-url')) 
+            if (this.path !== btn.getAttribute('data-url')) 
               this.path = btn.getAttribute('data-url') as string;  
               this.player?.loadVideoById({ videoId: this.path })
             
@@ -57,20 +57,21 @@ export default class VideoPlayer {
       width: '100%',
       videoId: `${url}`,
       events: {
+        //@ts-ignore-next-line
         'onStateChange': this.onPlayerStateChange
       }
     })
-    this.overlay.style.display = 'flex '
+    this.overlay.style.display = 'flex'
   }
 
-  onPlayerStateChange(state: any) {
+  onPlayerStateChange(state: any): void {
     try{
-      const blockedElem = (this.activeBtn.closest('.module__video-item') as HTMLElement).nextElementSibling as HTMLElement;
-      const playBtn = (this.activeBtn.querySelector('svg') as SVGElement).cloneNode(true);
+      const blockedElem = ((this.activeBtn as HTMLElement).closest('.module__video-item') as HTMLElement).nextElementSibling as HTMLElement;
+      const playBtn = ((this.activeBtn as HTMLElement).querySelector('svg') as SVGSVGElement).cloneNode(true);
   
       if (state.data === 0) {
-        if ((blockedElem.querySelector('.play__Circle') as HTMLElement).classList.remove('closed')) {
-          (blockedElem.querySelector('.play__Circle') as HTMLElement).classList.contains('closed');
+        if ((blockedElem.querySelector('.play__Circle') as HTMLElement).classList.contains('closed')) {
+          (blockedElem.querySelector('.play__Circle') as HTMLElement).classList.remove('closed');
           (blockedElem.querySelector('svg') as SVGElement).remove();
           (blockedElem.querySelector('.play__circle') as HTMLElement).append(playBtn);
           (blockedElem.querySelector('.play__text') as HTMLElement).textContent = 'play video';
