@@ -7,7 +7,7 @@ export default class VideoPlayer {
   close: HTMLElement
   player?: IYouTubePlayer
   path?: string
-  activeBtn?: HTMLElement 
+  activeBtn?: HTMLElement
 
   constructor(triggers: string, overlay: string) {
     this.btns = document.querySelectorAll(
@@ -37,11 +37,11 @@ export default class VideoPlayer {
       btn.addEventListener('click', () => {
         if( btn.closest('.module__video-item')?.getAttribute('data-disabled') !== 'true') {
           if (document.querySelector('iframe#frame')) {
-            this.overlay.style.display = 'flex'
-            if (this.path !== btn.getAttribute('data-url')) {
+            (this.overlay as HTMLElement).style.display = 'flex'
+            && (this.path !== btn.getAttribute('data-url')) 
               this.path = btn.getAttribute('data-url') as string;  
               this.player?.loadVideoById({ videoId: this.path })
-            }
+            
           } else {
             this.path = btn.getAttribute('data-url') as string;
             this.createPlayer(this.path)
@@ -75,8 +75,8 @@ export default class VideoPlayer {
           (blockedElem.querySelector('.play__circle') as HTMLElement).append(playBtn);
           (blockedElem.querySelector('.play__text') as HTMLElement).textContent = 'play video';
           (blockedElem.querySelector('.play__text') as HTMLElement).classList.remove('attention');
-          (blockedElem as HTMLElement).style.opacity = 1;
-          blockedElem.style.filter = 'none';
+          (blockedElem as HTMLElement).style.opacity = '1';
+          (blockedElem as HTMLElement).style.filter = 'none';
   
           blockedElem.setAttribute('data-disabled', 'false');
         }
